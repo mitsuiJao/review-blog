@@ -1,6 +1,4 @@
 ---
-tags: pages
-layout: base.njk
 title: このサイトについて
 ---
 ## {{ title }}
