@@ -9,14 +9,14 @@
 
 <body style="text-align: center;">
   <div class="container">
-    {% include "components/header.html" %}
+    {% include "components/header.njk" %}
     <div class="main">
       <main>
-        {{ content }}
+        {{ content | safe }}
       </main>
-      {% include "components/sidebar.html" %}
+      {% include "components/sidebar.njk" %}
     </div>
-    {% include "components/footer.html" %}
+    {% include "components/footer.njk" %}
   </div>
 </body>
 

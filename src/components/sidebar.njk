@@ -5,15 +5,18 @@
     </colgroup>
     <thead>
       <tr>
-        <th>Title</th>
+        <th>Menu</th>
       </tr>
     </thead>
     <tbody>
-      {%- for post in collections.posts %}
       <tr>
-        <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+        <td><a href="about.html">about</a></td>
       </tr>
-      {%- endfor %}
+      <tr>
+        <td><a href="https://nishima-tech.com" target="_blank" rel="noopener noreferrer">
+          main site
+        </a></td>
+      </tr>
     </tbody>
   </table>
 </div>
