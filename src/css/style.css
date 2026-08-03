@@ -1,0 +1,26 @@
+.container {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.main {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    gap: 2rem;
+}
+.sidebar {
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}

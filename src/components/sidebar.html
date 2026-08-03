@@ -1,0 +1,19 @@
+<div class="sidebar">
+  <table class="sidebar-table">
+    <colgroup>
+      <col style="width: 100%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for post in collections.posts %}
+      <tr>
+        <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>

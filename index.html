@@ -1,0 +1,27 @@
+---
+subject: World
+title: Home
+layout: base.html
+---
+
+<h2>Posts</h2>
+<table>
+  <colgroup>
+    <col style="width: 70%;">
+    <col style="width: 30%;">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%- for post in collections.posts %}
+      <tr>
+        <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
+        <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+      </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+
