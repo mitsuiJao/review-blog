@@ -10,7 +10,7 @@
 }
 .main {
     display: grid;
-    grid-template-columns: 1fr 30%;
+    grid-template-columns: 1fr 20%;
     gap: 2rem;
 }
 .sidebar-table {
