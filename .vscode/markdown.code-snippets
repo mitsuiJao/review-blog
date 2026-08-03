@@ -1,0 +1,19 @@
+{
+  "template": {
+    "scope": "markdown",
+    "prefix": "!",
+    "body": [
+        "---",
+        "tags: posts",
+        "layout: base.njk",
+        "title: $1",
+        "type: $2",
+        "star: $3",
+        "---",
+        "## {{ title }}",
+        "",
+        "$0"
+    ],
+    "description": "記事テンプレート"
+  }
+}

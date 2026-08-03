@@ -1,6 +1,7 @@
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy("public");
+
   eleventyConfig.addFilter("date", (dateObj, format = "%Y-%m-%d") => {
     const d = new Date(dateObj);
     const tokens = {
@@ -10,6 +11,7 @@ module.exports = function (eleventyConfig) {
     };
     return format.replace(/%[Ymd]/g, (token) => tokens[token]);
   });
+  
   return {
     dir: {
       input: ".",
@@ -17,5 +19,6 @@ module.exports = function (eleventyConfig) {
       layouts: "src",
       output: "_site",
     },
+    markdownTemplateEngine: "njk",
   };
 };
