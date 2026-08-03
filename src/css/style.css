@@ -1,26 +1,46 @@
+* {
+    background-color: #fffbe9;
+}
+
 .container {
     text-align: left;
     max-width: 800px;
     margin: 0 auto;
+    min-height: 95vh;
 }
 .main {
     display: grid;
     grid-template-columns: 1fr 30%;
     gap: 2rem;
 }
-.sidebar {
+.sidebar-table {
+    width: 100%;
     padding: 1rem;
     border-radius: 4px;
+    text-align: center;
 }
-
+.description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+.heading {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
 h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
-
+tr {
+    border-bottom: 1px solid #ccc;
+    height: 2rem;
+}
 footer {
     margin-top: 2rem;
     text-align: center;
     color: #666;
     font-size: 0.9rem;
+    position: sticky;
+    top: 100vh;
 }

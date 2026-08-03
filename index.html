@@ -4,17 +4,11 @@ title: Home
 layout: base.html
 ---
 
-<h2>Posts</h2>
+<h3 class="heading">新着記事！</h3>
 <table>
   <colgroup>
     <col style="width: 70%;">
     <col style="width: 30%;">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-    </tr>
-  </thead>
   <tbody>
     {%- for post in collections.posts %}
       <tr>
