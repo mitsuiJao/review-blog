@@ -1,6 +1,25 @@
+const { spawn } = require("node:child_process");
+
+function runPagefind() {
+  return new Promise((resolve, reject) => {
+    const child = spawn("npx", ["pagefind", "--site", "_site"], {
+      stdio: "inherit",
+    });
+    child.on("error", reject);
+    child.on("close", (code) =>
+      code === 0 ? resolve() : reject(new Error(`pagefind exited with code ${code}`))
+    );
+  });
+}
+
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy("public");
+
+  eleventyConfig.on("eleventy.after", async () => {
+    await runPagefind();
+  });
+
   eleventyConfig.addFilter("date", (dateObj, format = "%Y-%m-%d") => {
     const d = new Date(dateObj);
     const tokens = {
@@ -10,12 +29,18 @@ module.exports = function (eleventyConfig) {
     };
     return format.replace(/%[Ymd]/g, (token) => tokens[token]);
   });
+
+  eleventyConfig.addFilter("byType", (posts, type) =>
+    posts.filter((post) => post.data.type === type)
+  );
+
   return {
     dir: {
-      input: ".",
-      includes: "src",
-      layouts: "src",
+      input: "src",
+      includes: "_includes",
+      layouts: "_includes",
       output: "_site",
     },
+    markdownTemplateEngine: "njk",
   };
 };

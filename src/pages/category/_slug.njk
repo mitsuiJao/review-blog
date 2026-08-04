@@ -1,0 +1,31 @@
+---
+pagination:
+  data: categorySlugs
+  size: 1
+  alias: slug
+layout: base.njk
+permalink: "/category/{{ slug }}/"
+eleventyComputed:
+  title: "{{ types[slug] }}の記事一覧"
+---
+{% from "components/star.njk" import star %}
+
+<h2 class="heading">{{ types[slug] }}の記事一覧</h2>
+<table class="articles">
+  <colgroup>
+    <col style="width: 60%;">
+    <col style="width: 10%;">
+    <col style="width: 20%;">
+    <col style="width: 10%;">
+  </colgroup>
+  <tbody>
+    {%- for post in collections.posts | byType(slug) %}
+      <tr>
+        <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
+        <td>{{ types[post.data.type] }}</td>
+        <td>{{ star(post.data.star) }}</td>
+        <td>{{ post.date | date("%Y-%m-%d") }}</td>
+      </tr>
+    {%- endfor %}
+  </tbody>
+</table>

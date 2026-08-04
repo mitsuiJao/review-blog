@@ -1,0 +1,21 @@
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+<div id="search" class="pagefind-ui">
+    <style>
+        #search .pagefind-ui__search-input,
+        #search .pagefind-ui__search-clear {
+            display: none;
+        }
+        #search .pagefind-ui__form:before {
+            display: none; /* 虫眼鏡アイコン */
+        }    
+    </style>
+</div>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const pui = new PagefindUI({ element: "#search" });
+    const q = new URLSearchParams(location.search).get("q");
+    if (q) pui.triggerSearch(q);
+  });
+</script>
