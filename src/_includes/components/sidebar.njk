@@ -1,14 +1,16 @@
 <div class="sidebar">
   <table class="sidebar-table">
     <colgroup>
-      <col style="width: 100%;">
     </colgroup>
     <tbody>
       <tr>
         <td>記事検索</td>
       </tr>
       <tr>
-        <td><input class="form-control" type="text" placeholder="Search..."></td>
+        <form id="search-form" action="/result/" method="get">
+          <td><input class="form-control" type="text" name="q" placeholder="Search..."></td>
+          <td><button class="submit-button" type="submit">検索</button></td>
+        </form>
       </tr>
       <tr>
         <td></td>

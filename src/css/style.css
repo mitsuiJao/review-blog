@@ -43,12 +43,14 @@
     margin-right: 0.5rem;
     text-decoration: none;
 }
+.submit-button {
+    white-space: nowrap;
+}
 tr {
     border-bottom: 1px solid #ccc;
     height: 2rem;
 }
 input {
-    width: 100%;
     padding: 0.5rem;
     background-color: #ffffff;
 }

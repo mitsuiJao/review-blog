@@ -1,6 +1,24 @@
+const { spawn } = require("node:child_process");
+
+function runPagefind() {
+  return new Promise((resolve, reject) => {
+    const child = spawn("npx", ["pagefind", "--site", "_site"], {
+      stdio: "inherit",
+    });
+    child.on("error", reject);
+    child.on("close", (code) =>
+      code === 0 ? resolve() : reject(new Error(`pagefind exited with code ${code}`))
+    );
+  });
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy("public");
+
+  eleventyConfig.on("eleventy.after", async () => {
+    await runPagefind();
+  });
 
   eleventyConfig.addFilter("date", (dateObj, format = "%Y-%m-%d") => {
     const d = new Date(dateObj);
