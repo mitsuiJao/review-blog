@@ -1,11 +1,15 @@
 ---
-subject: World
-title: Home
+pagination:
+  data: categorySlugs
+  size: 1
+  alias: slug
+title: "{{ types[slug] }}の記事一覧"
 layout: base.njk
+permalink: "/category/{{ slug }}/"
 ---
 {% from "components/star.njk" import star %}
 
-<h3 class="heading">新着記事！</h3>
+<h2 class="heading">{{ types[slug] }}の記事一覧</h2>
 <table class="articles">
   <colgroup>
     <col style="width: 60%;">
@@ -14,7 +18,7 @@ layout: base.njk
     <col style="width: 10%;">
   </colgroup>
   <tbody>
-    {%- for post in collections.posts %}
+    {%- for post in collections.posts | byType(slug) %}
       <tr>
         <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
         <td>{{ types[post.data.type] }}</td>
@@ -24,18 +28,3 @@ layout: base.njk
     {%- endfor %}
   </tbody>
 </table>
-
-<br>
-<h3 class="heading">カテゴリ別記事一覧</h3>
-<table class="category-articles">
-  <tbody>
-    <tr>
-    {%- for type, label in types %}
-        <td><a href="/category/{{ type }}/" class="category-link">
-        {{ label }}
-        </a></td>
-    {%- endfor %}
-    </tr>
-  </tbody>
-</table>
-

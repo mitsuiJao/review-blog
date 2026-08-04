@@ -11,7 +11,11 @@ module.exports = function (eleventyConfig) {
     };
     return format.replace(/%[Ymd]/g, (token) => tokens[token]);
   });
-  
+
+  eleventyConfig.addFilter("byType", (posts, type) =>
+    posts.filter((post) => post.data.type === type)
+  );
+
   return {
     dir: {
       input: "src",
