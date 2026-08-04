@@ -25,16 +25,32 @@
     margin-top: 0.5rem;
 }
 .heading {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin: 0.5rem;
 }
-h1 {
+.articles {
+    width: 100%;
+    border-collapse: collapse;
+}
+.title {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+}
+.title a {
+    text-decoration: none;
+    color: #000;
+}
+.category-link {
+    margin-right: 0.5rem;
+    text-decoration: none;
 }
 tr {
     border-bottom: 1px solid #ccc;
     height: 2rem;
+}
+input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #ffffff;
 }
 footer {
     margin-top: 2rem;
