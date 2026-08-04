@@ -3,9 +3,10 @@ pagination:
   data: categorySlugs
   size: 1
   alias: slug
-title: "{{ types[slug] }}の記事一覧"
 layout: base.njk
 permalink: "/category/{{ slug }}/"
+eleventyComputed:
+  title: "{{ types[slug] }}の記事一覧"
 ---
 {% from "components/star.njk" import star %}
 

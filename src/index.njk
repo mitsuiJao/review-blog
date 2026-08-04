@@ -27,15 +27,8 @@ layout: base.njk
 
 <br>
 <h3 class="heading">カテゴリ別記事一覧</h3>
-<table class="category-articles">
-  <tbody>
-    <tr>
-    {%- for type, label in types %}
-        <td><a href="/category/{{ type }}/" class="category-link">
-        {{ label }}
-        </a></td>
-    {%- endfor %}
-    </tr>
-  </tbody>
-</table>
-
+{%- for type, label in types %}
+  <a href="/category/{{ type }}/" class="category-link">
+    {{ label }}
+  </a>
+{%- endfor %} 
