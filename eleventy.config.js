@@ -15,6 +15,7 @@ function runPagefind() {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy("public");
+  eleventyConfig.addPassthroughCopy("src/article/**/*.{jpg,jpeg,png,gif,webp,svg}");
 
   eleventyConfig.on("eleventy.after", async () => {
     await runPagefind();
