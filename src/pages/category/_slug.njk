@@ -8,7 +8,7 @@ permalink: "/category/{{ slug }}/"
 eleventyComputed:
   title: "{{ types[slug] }}の記事一覧"
 ---
-{% from "components/star.njk" import star %}
+{% from "components/star.njk" import starMacro %}
 
 <h2 class="heading">{{ types[slug] }}の記事一覧</h2>
 <table class="articles">
@@ -23,7 +23,7 @@ eleventyComputed:
       <tr>
         <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
         <td>{{ types[post.data.type] }}</td>
-        <td>{{ star(post.data.star) }}</td>
+        <td>{{ starMacro(post.data.star, 16) }}</td>
         <td>{{ post.date | date("%Y-%m-%d") }}</td>
       </tr>
     {%- endfor %}
