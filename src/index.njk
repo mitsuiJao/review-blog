@@ -14,13 +14,15 @@ layout: base.njk
     <col style="width: 10%;">
   </colgroup>
   <tbody>
-    {%- for post in collections.posts %}
-      <tr>
-        <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
-        <td>{{ types[post.data.type] }}</td>
-        <td>{{ star(post.data.star) }}</td>
-        <td>{{ post.date | date("%Y-%m-%d") }}</td>
-      </tr>
+    {%- for post in collections.posts | sort("date") %}
+      {% if loop.index <= 5 %}
+        <tr>
+          <td><a href="{{ post.url }}">{{ post.data.title }}</a></td>
+          <td>{{ types[post.data.type] }}</td>
+          <td>{{ star(post.data.star) }}</td>
+          <td>{{ post.date | date("%Y-%m-%d") }}</td>
+        </tr>
+      {% endif %}
     {%- endfor %}
   </tbody>
 </table>
