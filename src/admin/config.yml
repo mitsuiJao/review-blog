@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: mitsuiJao/review-blog
+  branch: main
+  base_url: https://decapcms.nishima-kun.workers.dev/
+  auth_endpoint: auth
+
+# ローカルで `npx decap-server` を起動すると、GitHub認証なしで
+# ローカルファイルを直接編集できます（開発確認用）。
+local_backend: true
+
+# 全コレクション共通のメディア置き場所（フォールバック）。
+# 記事ごとの画像は下の article コレクション側で個別指定しているため、
+# ここは主に汎用アップロード用です。
+media_folder: "public/images"
+public_folder: "/public/images"
+
+collections:
+  - name: "article"
+    label: "記事"
+    label_singular: "記事"
+    folder: "src/article"
+    create: true
+    slug: "{{slug}}"
+    # src/article/{type}/{slug}/index.md という既存のディレクトリ構成に合わせる
+    path: "{{fields.type}}/{{slug}}/index"
+    # 画像は index.md と同じフォルダに置く（既存記事の構成に合わせる）
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - label: "種別"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "小説", value: "novel" }
+          - { label: "エッセイ", value: "essay" }
+          - { label: "映画", value: "movie" }
+          - { label: "YouTube", value: "youtube" }
+          - { label: "ゲーム", value: "game" }
+          - { label: "音楽", value: "music" }
+          - { label: "ポッドキャスト", value: "podcast" }
+          - { label: "その他", value: "other" }
+      - label: "評価"
+        name: "star"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        max: 5
+        default: 0
+      - label: "投稿日"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+      - { label: "本文", name: "body", widget: "markdown" }
