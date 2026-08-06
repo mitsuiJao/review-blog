@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+{% from "components/star.njk" import starMacro %}
+
+<h2 data-pagefind-meta="title">{{ title }}</h2>
+<div class="data-field">
+  {{ starMacro(star, 24) }}
+  
+  <div class="date-field">
+    <img class="clock" src="/public/images/clock.svg" alt="clock-icon" />
+    <p class="date">{{ page.date | date("%Y-%m-%d") }}</p>
+  </div>
+</div>
+{{ content | safe }}

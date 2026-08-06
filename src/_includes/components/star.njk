@@ -1,8 +1,10 @@
-{% macro star(n) %}
-    {% for i in range(n) %}
-        <img src="/public/images/star.png" width="16" height="16" alt="star" class="star" />
-    {% endfor %}
-    {% for i in range(5 - n) %}
-        <img src="/public/images/notstar.png" width="16" height="16" alt="star" class="star" />
-    {% endfor %}
+{% macro starMacro(n, size) %}
+    <div class="star-container">
+        {% for i in range(n) %}
+            <img src="/public/images/star.png" width="{{ size }}" height="{{ size }}" alt="star" class="star" />
+        {% endfor %}
+        {% for i in range(5 - n) %}
+            <img src="/public/images/notstar.png" width="{{ size }}" height="{{ size }}" alt="star" class="star" />
+        {% endfor %}
+    </div>
 {% endmacro %}

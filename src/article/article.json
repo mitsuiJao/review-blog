@@ -1,5 +1,6 @@
 {
-  "layout": "base.njk",
+  "layout": "article.njk",
   "tags": ["posts"],
-  "pagefind": true
+  "pagefind": true,
+  "permalink": "/article/{{ page.fileSlug }}/"
 }
