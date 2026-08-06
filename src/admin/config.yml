@@ -21,14 +21,19 @@ collections:
     label_singular: "記事"
     folder: "src/article"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     # src/article/{type}/{slug}/index.md という既存のディレクトリ構成に合わせる
-    path: "{{fields.type}}/{{slug}}/index"
+    path: "{{fields.type}}/{{fields.slug}}/index"
     # 画像は index.md と同じフォルダに置く（既存記事の構成に合わせる）
     media_folder: ""
     public_folder: ""
     fields:
       - { label: "タイトル", name: "title", widget: "string" }
+      - label: "スラッグ（URL・フォルダ名）"
+        name: "slug"
+        widget: "string"
+        meta: true
+        hint: "半角英数字とハイフンのみ推奨。記事のURL（/article/{slug}/）とファイル保存先フォルダ名になります"
       - label: "種別"
         name: "type"
         widget: "select"
