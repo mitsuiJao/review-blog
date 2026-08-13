@@ -22,10 +22,12 @@ collections:
     folder: "src/article"
     create: true
     # path内で参照するフィールドはslug側にも含めないと再計算されない(Decap CMSの既知の挙動)ため、
-    # typeもslugテンプレートに含めている
+    # typeもslugテンプレートに含めている。pathはfields.type/fields.slugを直接参照したままにする
+    # (既存記事一覧表示時、Decapがこのpathを逆算してfields値を復元するため、{{slug}}経由の間接参照だと
+    # 逆算できず一覧に出てこなくなる)
     slug: "{{fields.type}}/{{fields.slug}}"
     # src/article/{type}/{slug}/index.md という既存のディレクトリ構成に合わせる
-    path: "{{slug}}/index"
+    path: "{{fields.type}}/{{fields.slug}}/index"
     # 画像は index.md と同じフォルダに置く（既存記事の構成に合わせる）
     media_folder: ""
     public_folder: ""
