@@ -91,3 +91,7 @@ footer {
     position: sticky;
     top: 100vh;
 }
+footer a {
+    text-decoration: none;
+    color: #666;
+}
