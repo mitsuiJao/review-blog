@@ -21,9 +21,11 @@ collections:
     label_singular: "記事"
     folder: "src/article"
     create: true
-    slug: "{{fields.slug}}"
+    # path内で参照するフィールドはslug側にも含めないと再計算されない(Decap CMSの既知の挙動)ため、
+    # typeもslugテンプレートに含めている
+    slug: "{{fields.type}}/{{fields.slug}}"
     # src/article/{type}/{slug}/index.md という既存のディレクトリ構成に合わせる
-    path: "{{fields.type}}/{{fields.slug}}/index"
+    path: "{{slug}}/index"
     # 画像は index.md と同じフォルダに置く（既存記事の構成に合わせる）
     media_folder: ""
     public_folder: ""
@@ -33,7 +35,8 @@ collections:
         name: "slug"
         widget: "string"
         meta: true
-        hint: "半角英数字とハイフンのみ推奨。記事のURL（/article/{slug}/）とファイル保存先フォルダ名になります"
+        required: false
+        hint: "新規作成時のみpathに反映、2回目以降は空"
       - label: "種別"
         name: "type"
         widget: "select"
