@@ -21,10 +21,11 @@ collections:
     label_singular: "記事"
     folder: "src/article"
     create: true
-    # path内で参照するフィールドはslug側にも含めないと再計算されない(Decap CMSの既知の挙動)ため、
-    # typeもslugテンプレートに含めている。pathはfields.type/fields.slugを直接参照したままにする
-    # (既存記事一覧表示時、Decapがこのpathを逆算してfields値を復元するため、{{slug}}経由の間接参照だと
-    # 逆算できず一覧に出てこなくなる)
+    # pathはfields.type/fields.slugを直接参照する(間接参照{{slug}}経由にすると、
+    # 既存記事一覧表示時にDecapがpathを逆算してfields値を復元できず一覧に出てこなくなる)。
+    # slugフィールドはmeta: trueにしないこと（meta:trueの値はentry.dataでなくentry.metaに
+    # 格納され、slug/pathテンプレートの評価はentry.dataしか見ないため、新規作成時に
+    # フィールドが存在しないものとして扱われ空文字列になり保存に失敗する）
     slug: "{{fields.type}}/{{fields.slug}}"
     # src/article/{type}/{slug}/index.md という既存のディレクトリ構成に合わせる
     path: "{{fields.type}}/{{fields.slug}}/index"
@@ -36,9 +37,8 @@ collections:
       - label: "スラッグ（URL・フォルダ名）"
         name: "slug"
         widget: "string"
-        meta: true
         required: false
-        hint: "新規作成時のみpathに反映、2回目以降は空"
+        hint: "新規作成時のみpath/フォルダ名に反映されます。既存記事の編集画面ではfrontmatterに保存された値が表示されますが、フォルダ構成自体は変わりません。"
       - label: "種別"
         name: "type"
         widget: "select"
