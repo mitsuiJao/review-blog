@@ -2,6 +2,7 @@
 title: 成瀬は信じた道を行く
 type: novel
 star: 5
+creator: 宮島未奈
 ---
 
 前作に引き続き面白かった

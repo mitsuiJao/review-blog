@@ -2,6 +2,7 @@
 title: コンビニ人間
 type: novel
 star: 4
+creator: 村田沙耶香
 ---
 
 今更ですが、コンビニ人間を読みました。

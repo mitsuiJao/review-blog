@@ -3,7 +3,11 @@ layout: base.njk
 ---
 {% from "components/star.njk" import starMacro %}
 
-<h2 data-pagefind-meta="title">{{ title }}</h2>
+<p class="type">{{ types[type] }}</p>
+<div class="info-field">
+  <h2 data-pagefind-meta="title">{{ title }}</h2>
+  <p class="creator-name">{{ creator }}</p>
+</div>
 <div class="data-field">
   {{ starMacro(star, 24) }}
   
